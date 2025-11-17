@@ -1,10 +1,12 @@
-public class NoInicio{
+public class No extends Object{
     private Object elemento;
     private Object proximo;
+    private Object anterior;
 
-    public NoInicio(Object o){
+    public No(Object o){
         elemento = o;
         proximo = null;
+        anterior = null;
     }
 
     public void setElemento(Object o){
@@ -20,9 +22,20 @@ public class NoInicio{
     }
 
     public Object getProximo(){
-        if(this.proximo==null)
+        if(proximo==null)
             return null;
         return proximo;
     }
 
+    public void setAnterior(Object o){
+        this.anterior = o;  
+    }
+
+    public Object getAnterior(){
+        if(anterior==null)
+            return null;
+        return anterior;
+    }
+
 }
+
