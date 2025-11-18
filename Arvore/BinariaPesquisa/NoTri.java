@@ -1,12 +1,12 @@
-public class NoTriplo extends Object{
+public class NoTri extends Object{
     private Object elemento;
-    private No pai;
-    private No esquerda;
-    private No direita;
+    private NoTri pai;
+    private NoTri esquerda;
+    private NoTri direita;
 
-    public NoTriplo(Object o){
+    public NoTri(Object o){
         elemento = o;
-        pai = null
+        pai = null;
         esquerda = null;
         direita = null;
     }
@@ -21,33 +21,33 @@ public class NoTriplo extends Object{
     }
 
   
-    public void setEsquerda(No o){
+    public void setEsquerda(NoTri o){
         this.esquerda = o;  
     }
 
-    public No getEsquerda(){
+    public NoTri getEsquerda(){
         if(esquerda==null)
             return null;
         return esquerda;
     }
 
   
-  public void setDireita(No o){
+  public void setDireita(NoTri o){
         this.direita = o;  
     }
 
-    public No getDireita(){
+    public NoTri getDireita(){
         if(direita==null)
             return null;
         return direita;
     }
 
   
-    public void setPai(No o){
+    public void setPai(NoTri o){
         this.pai = o;  
     }
 
-    public No getPai(){
+    public NoTri getPai(){
         if(pai==null)
             return null;
         return pai;

@@ -15,9 +15,9 @@ public class ListaRun extends Object{
     System.out.println("Lista:");
     temp1 = (No) s.getProximo();
     while(temp1 != f){
-            System.out.println(((No)temp1).getElemento());
-            temp1 = (No) ((No)temp1).getProximo();
-        }
+      System.out.println(((No)temp1).getElemento());
+      temp1 = (No) ((No)temp1).getProximo();
+    }
     System.out.println(f.getElemento());
 
     //Adicionar
