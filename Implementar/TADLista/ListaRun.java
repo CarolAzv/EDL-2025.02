@@ -12,7 +12,7 @@ public class ListaRun extends Object{
     
     //print
     System.out.println("Lista:");
-    temp1 = s.getProximo();
+    temp1 = s;
     while(temp1 != f){
             System.out.println(temp1.getElemento());
             temp1 = temp1.getProximo();
@@ -38,7 +38,7 @@ public class ListaRun extends Object{
 
     //print
     System.out.println("Lista:");
-    temp1 = s.getProximo();
+    temp1 = s;
     while(temp1 != f){
             System.out.println(temp1.getElemento());
             temp1 = temp1.getProximo();
@@ -54,7 +54,7 @@ public class ListaRun extends Object{
 
     //print
     System.out.println("Lista:");
-    temp1 = s.getProximo();
+    temp1 = s;
     while(temp1 != f){
             System.out.println(temp1.getElemento());
             temp1 = temp1.getProximo();
