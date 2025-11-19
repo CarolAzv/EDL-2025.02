@@ -3,6 +3,8 @@ public class SequenciaRun{
 
     public static void main (String[] args){
         dd = new Duplamente();
+        Object temp;
+        int i;
 
         //print
         int tam = dd.size();
@@ -17,15 +19,22 @@ public class SequenciaRun{
         dd.insert("Coelho");
 
         //print
-        Object temp;
         tam = dd.size();
         System.out.println("Tamanho: "+ tam);
         emp = dd.isEmpty();
         System.out.println("Tamanho: "+ emp);
-        for(int i=1; i<tam+1; i++){
+        for(i=1; i<tam+1; i++){
             temp = dd.elemAtRank(i);
             System.out.println(temp);
         }
+
+        //Rank of
+        temp = dd.rankOf("Cachorro");
+        System.out.println("- Rank do item 'Cachorro': " + temp);
+
+        //At rank
+        temp = dd.atRank(2);
+        System.out.println("- Item do rank 2: " + temp);
 
         //Add at rank
         System.out.println("- Adicionando ao rank 2");
@@ -36,7 +45,7 @@ public class SequenciaRun{
         System.out.println("Tamanho: "+ tam);
         emp = dd.isEmpty();
         System.out.println("Tamanho: "+ emp);
-        for(int i=1; i<tam+1; i++){
+        for(i=1; i<tam+1; i++){
             temp = dd.elemAtRank(i);
             System.out.println(temp);
         }
@@ -50,7 +59,21 @@ public class SequenciaRun{
         System.out.println("Tamanho: "+ tam);
         emp = dd.isEmpty();
         System.out.println("Tamanho: "+ emp);
-        for(int i=1; i<tam+1; i++){
+        for(i=1; i<tam+1; i++){
+            temp = dd.elemAtRank(i);
+            System.out.println(temp);
+        }
+
+        //replace at rank
+        System.out.println("- Substituindo o rank 1 por 'Papagaio'");
+        dd.replaceAtRank(1, "Papagaio");
+
+        //print
+        tam = dd.size();
+        System.out.println("Tamanho: "+ tam);
+        emp = dd.isEmpty();
+        System.out.println("Tamanho: "+ emp);
+        for(i=1; i<tam+1; i++){
             temp = dd.elemAtRank(i);
             System.out.println(temp);
         }

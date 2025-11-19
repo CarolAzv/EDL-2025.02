@@ -45,13 +45,13 @@ public class Duplamente{
             for(int i=0; i<size()-r-1 ; i++)
                 node = node.getAnterior();
         }
-        return node;
+        return node.getElemento();
     }
 
-    public int rankOf(No o){
+    public int rankOf(Object o){
         No n = Start.getProximo();
         int r = 0;
-        while(n!=o && n!=End) {
+        while(n.getElemento()!=o && n!=End) {
         n = n.getProximo();
         r++;
         }
@@ -69,7 +69,7 @@ public class Duplamente{
         No novo = new No(o);
         No node = Start;
 
-        for(int i=0; i<n; i++){
+        for(int i=-1; i<n; i++){
             node = node.getProximo();
         }
 
@@ -106,7 +106,7 @@ public class Duplamente{
         }
 
         No atual = Start;
-        for(int i=0; i<n; i++){
+        for(int i=-1; i<n; i++){
             atual = atual.getProximo();
         }
 
@@ -121,7 +121,7 @@ public class Duplamente{
         }
 
         No atual = Start;
-        for(int i=0; i<n; i++){
+        for(int i=-1; i<n; i++){
             atual = atual.getProximo();
         }
 
