@@ -1,4 +1,4 @@
-public class FimLista implements NoFim{
+public class FimLista{
     private Object elemento;
     private Object anterior;
 

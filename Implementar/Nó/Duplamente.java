@@ -1,4 +1,4 @@
-public class Duplamente implements Sequencia{
+public class Duplamente{
     private No Start;
     private No End;
     private int tamanho;
@@ -11,48 +11,127 @@ public class Duplamente implements Sequencia{
         tamanho = 0;
     }
 
+    //Geral 1
     public int size(){
         return tamanho;
     }
 
     public boolean isEmpty(){
-        if(tamanho == 0)
+        if(tamanho==0)
             return true;
         return false;
     }
 
+    //Geral 2
     public void insert(Object o){
         No novo = new No(o);
-        Object before = End.getAnterior();
+        No antes = End.getAnterior();
 
-        before.setProximo(novo);
-        novo.setAnterior(before);
+        antes.setProximo(novo);
+        novo.setAnterior(antes);
         novo.setProximo(End);
         End.setAnterior(novo);
         tamanho++;
     }
 
+    public Object atRank(int r){
+        No node;
+        if(r <= size()/2){
+            node = Start.getProximo();
+            for(int i=0; i<r; i++);
+                node = node.getProximo();
+        }else{
+            node = End.getAnterior();
+            for(int i=0; i<size()-r-1 ; i++)
+                node = node.getAnterior();
+        }
+        return node;
+    }
+
+    public int rankOf(No o){
+        No n = Start.getProximo();
+        int r = 0;
+        while(n!=o && n!=End) {
+        n = n.getProximo();
+        r++;
+        }
+        return r;
+    }
+
+
+    //Detalhe
     public void insertAtRank(int n, Object o){
+        if(isEmpty())
+            throw new Error("Sequencia Vazia");
+        if(n<0 || n>size()){
+            throw new Error("Indice Invalido");
+        }
+        No novo = new No(o);
+        No node = Start;
+
+        for(int i=0; i<n; i++){
+            node = node.getProximo();
+        }
+
+        No antes = (node).getAnterior();
+
+        novo.setAnterior(antes);
+        node.setAnterior(novo);
+
+        novo.setProximo(novo);
+        antes.setProximo(novo);
+        tamanho++;
 
     }
 
     public Object elemAtRank(int n){
         if(isEmpty())
-            throw new ESequenciaVazia("Sequencia Vazia");
+            throw new Error("Sequencia Vazia");
         if(n<0 || n>size()){
-            throw new ESequenciaVazia("Indice Invalido");
+            throw new Error("Indice Invalido");
         }
+
         No atual = Start;
-        int contar = 0;
-        while(contar!=n){
-            atual = atual.proximo;
-            contar++;
+        for(int i=0; i<n; i++){
+            atual = atual.getProximo();
         }
+        return atual.getElemento();
     }
 
     public void replaceAtRank(int n, Object o){
+        if(isEmpty())
+            throw new Error("Sequencia Vazia");
+        if(n<0 || n>size()){
+            throw new Error("Indice Invalido");
+        }
+
+        No atual = Start;
+        for(int i=0; i<n; i++){
+            atual = atual.getProximo();
+        }
+
+        atual.setElemento(o);
     }
 
     public void removeAtRank(int n){
+        if(isEmpty())
+            throw new Error("Sequencia Vazia");
+        if(n<0 || n>size()){
+            throw new Error("Indice Invalido");
+        }
+
+        No atual = Start;
+        for(int i=0; i<n; i++){
+            atual = atual.getProximo();
+        }
+
+        No ante = atual.getAnterior();
+        No dep = atual.getAnterior();
+
+        ante.setProximo(dep);
+        dep.setAnterior(ante);
+        atual.setProximo(null);
+        atual.setAnterior(null);
+        atual.setElemento(null);
     }
 }

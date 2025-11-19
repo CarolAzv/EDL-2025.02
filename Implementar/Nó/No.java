@@ -1,4 +1,4 @@
-public class No extends Object{
+public class No{
     private Object elemento;
     private No proximo;
     private No anterior;

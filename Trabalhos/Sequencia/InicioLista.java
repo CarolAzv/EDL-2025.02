@@ -1,4 +1,4 @@
-public class InicioLista implements NoInicio{
+public class InicioLista{
     private Object elemento;
     private Object proximo;
 
