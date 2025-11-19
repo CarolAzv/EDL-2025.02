@@ -1,6 +1,3 @@
-import ESequenciaVazia;
-
-
 public interface Lista{
     //generico
     public int size();
