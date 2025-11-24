@@ -174,6 +174,15 @@ public class ArvoreBinaria{
             }
         }
 
-        else{}
+        else{
+            //not done
+            if(seeing.getElemento>seeing.getPai().getElemento()){
+                seeing.getPai().setDireita(seeing.getDireita());
+            }
+            //not done
+            else{
+                seeing.getPai().setEsquerda(seeing.getDireita());
+            }
+        }
     }
 }
