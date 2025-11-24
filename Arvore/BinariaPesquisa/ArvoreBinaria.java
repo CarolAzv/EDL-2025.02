@@ -1,12 +1,29 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 public class ArvoreBinaria{
-    private NoTri raiz;
-    private int tamanho;
+    NoTri raiz;
+    int tamanho;
 
-    public ArvoreBinaria(){
-        raiz = null;
-        tamanho = 0;
+    public ArvoreBinaria(Object o){
+        raiz = new NoTri(o);
+        tamanho = 1;
     }
 
+    //acesso
+    public NoTri root(){
+        return this.raiz;
+    }
+    
+    public NoTri parent(NoTri no){
+        return no.getPai();
+    }
+
+    public Iterator children(NoTri no){
+        return no.children();
+    }
+
+
+    //informação
     public int size(){
         return tamanho;
     }
@@ -50,20 +67,6 @@ public class ArvoreBinaria{
     }
 
 
-    //acesso
-    public NoTri root(){
-        return raiz;
-    }
-    
-    public NoTri parent(NoTri no){
-        return no.getPai();
-    }
-
-    public Object children(NoTri no){
-        return [no.getEsquerda, no.getDireita];
-    }
-
-
     //consulta
     public boolean isInternal(NoTri no){
         if(no.getEsquerda() == null && no.getDireita() == null){
@@ -93,7 +96,39 @@ public class ArvoreBinaria{
         return 1+depth(parent(no));
     }
 
+
+    //addicionar
     public void replace(NoTri no, Object o){
         // Implementação futura
+    }
+
+    public void addChild(NoTri no, Object o){
+        NoTri novo = new NoTri(o);
+        NoTri seeing = no;
+        int foi = 0;
+        while(foi!=1){
+            if(seeing.getElemento()>o){
+                if(seeing.getEsquerda()==null){
+                    novo.setPai(seeing);
+                    seeing.setEsquerda(novo);
+                    tamanho++;
+                    foi++;
+                }
+                seeing=seeing.getEsquerda();
+            }
+            else if(seeing.getElemento()<o){
+                if(seeing.getDireita()==null){
+                    novo.setPai(seeing);
+                    seeing.getDireita(novo);
+                    tamanho++;
+                    foi++;
+                }
+                seeing=seeing.getDireita();
+            }
+            else{
+                System.err.println("Indece já existe!");
+                foi++;
+            }
+        }
     }
 }
