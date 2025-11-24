@@ -19,7 +19,10 @@ public class ArvoreBinaria{
     }
 
     public Iterator children(NoTri no){
-        return no.children();
+        NoTri child[] = new NoTri[2];
+        child[0] = no.getEsquerda();
+        child[1] = no.getDireita();
+        return child.iterator();
     }
 
 
@@ -98,7 +101,7 @@ public class ArvoreBinaria{
 
 
     //addicionar
-    public void replace(NoTri no, Object o){
+    public void replace(NoTri no, int o){
         // Implementação futura
     }
 
@@ -119,16 +122,58 @@ public class ArvoreBinaria{
             else if(seeing.getElemento()<o){
                 if(seeing.getDireita()==null){
                     novo.setPai(seeing);
-                    seeing.getDireita(novo);
+                    seeing.setDireita(novo);
                     tamanho++;
                     foi++;
                 }
                 seeing=seeing.getDireita();
             }
-            else{
+            else if(seeing.getElemento()==o){
                 System.err.println("Indece já existe!");
                 foi++;
             }
         }
+    }
+
+
+    //remover
+    public void remove(Object o){
+        NoTri seeing = raiz;
+        while(raiz.getElemento()!=o){
+            if(seeing.getElemento()>o){
+                seeing=seeing.getEsquerda();
+            }
+            else if(seeing.getElemento()<o){
+                seeing=seeing.getDireita();
+            }
+        }
+
+        if(seeing.getEsquerda()==null && seeing.getDireita()==null){
+            if(seeing.getElemento>seeing.getPai().getElemento){
+                seeing.getPai().setDireita(null);
+            }
+            else{
+                seeing.getPai().setEsquerda(null);
+            }
+        }
+
+        else if(seeing.getEsquerda()!=null && seeing.getDireita()==null){
+            if(seeing.getElemento>seeing.getPai().getElemento()){
+                seeing.getPai().setDireita(seeing.getEsquerda());
+            }
+            else{
+                seeing.getPai().setEsquerda(seeing.getEsquerda());
+            }
+        }
+        else if(seeing.getEsquerda()==null && seeing.getDireita()!=null){
+            if(seeing.getElemento>seeing.getPai().getElemento()){
+                seeing.getPai().setDireita(seeing.getDireita());
+            }
+            else{
+                seeing.getPai().setEsquerda(seeing.getDireita());
+            }
+        }
+
+        else{}
     }
 }
