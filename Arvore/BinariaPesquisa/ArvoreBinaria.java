@@ -1,4 +1,4 @@
-public class ArvoreBinaria implements TADArvore{
+public class ArvoreBinaria{
     private NoTri raiz;
     private int tamanho;
 
@@ -42,5 +42,58 @@ public class ArvoreBinaria implements TADArvore{
     public Object elements(){
         // Implementação futura
         return null;
+    }
+
+    public Object nos(){
+        // Implementação futura
+        return null;
+    }
+
+
+    //acesso
+    public NoTri root(){
+        return raiz;
+    }
+    
+    public NoTri parent(NoTri no){
+        return no.getPai();
+    }
+
+    public Object children(NoTri no){
+        return [no.getEsquerda, no.getDireita];
+    }
+
+
+    //consulta
+    public boolean isInternal(NoTri no){
+        if(no.getEsquerda() == null && no.getDireita() == null){
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean isExternal(NoTri no){
+        if(no.getEsquerda() == null && no.getDireita() == null){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isRoot(NoTri no){
+        if(no==raiz){
+            return true;
+        }
+        return false;
+    }
+
+    public int depth(NoTri no){
+        if(no==raiz){
+            return 0;
+        }
+        return 1+depth(parent(no));
+    }
+
+    public void replace(NoTri no, Object o){
+        // Implementação futura
     }
 }
