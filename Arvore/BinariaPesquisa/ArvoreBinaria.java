@@ -19,10 +19,11 @@ public class ArvoreBinaria{
     }
 
     public Iterator children(NoTri no){
-        NoTri child[] = new NoTri[2];
-        child[0] = no.getEsquerda();
-        child[1] = no.getDireita();
-        return child.iterator();
+        ArrayList<Object> child = new ArrayList<Object>();
+        child.add(no.getEsquerda());
+        child.add(no.getDireita());
+        Iterator<Object> ite = child.iterator();
+        return ite;
     }
 
 
@@ -59,9 +60,15 @@ public class ArvoreBinaria{
         return tamanho == 0;
     }
 
-    public Object elements(){
-        // Implementação futura
-        return null;
+    public Iterator elements(){
+        ArrayList<Object> elementos = new ArrayList<Object>();
+        for(int i=0; i>tamanho; i++){
+            elementos
+        }
+        child.add(no.getEsquerda());
+        child.add(no.getDireita());
+        Iterator<Object> ite = child.iterator();
+        return ite;
     }
 
     public Object nos(){
@@ -105,9 +112,9 @@ public class ArvoreBinaria{
         // Implementação futura
     }
 
-    public void addChild(NoTri no, Object o){
+    public void addChild(Object o){
         NoTri novo = new NoTri(o);
-        NoTri seeing = no;
+        NoTri seeing = raiz;
         int foi = 0;
         while(foi!=1){
             if(seeing.getElemento()>o){
