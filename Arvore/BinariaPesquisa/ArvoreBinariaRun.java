@@ -6,14 +6,22 @@ public class ArvoreBinariaRun{
         Object temp;
         int i;
 
+        //Add
+        arvore.addChild(5);
+        arvore.addChild(2);
+        arvore.addChild(8);
+        arvore.addChild(15);
+        arvore.addChild(22);
         //print
 
         //Add
-        
+        arvore.addChild(25);
+
         //print
 
         //remove
-        
+        arvore.remove(25);
+
         //print
     }
 }
