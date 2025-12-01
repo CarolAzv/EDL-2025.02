@@ -1,0 +1,51 @@
+Armazena uma coleção de itens compostos de chave e elemento
+
+
+Aplicações:
+    esperas de vôos
+    Filas em bancos
+
+
+Principais metodos:
+    insert(k, o)
+        Insere chave k com elemento o
+    removeMin()
+        retorna e remove o elemento de maior prioridade
+
+Metodos adicionais
+    min()
+        retorna mas não remove o elemento de maior prioridade
+    size(), isEmpty()
+
+---
+    key():
+        retorna a chav do item
+    value():
+        retorna o valor associado com o item
+
+
+*Comparador*
+
+Encapsula a ação de comparar dois dados
+
+O comprador é externo às chaves sendo comparadas
+
+Uma fila de prioridade genérica utiliza seu comparador para comparar duas chaves quando necessario
+
+Metodo principal:
+    compare(a, b): 
+        retorna um inteiro i tal que:
+        i<0 se a<b,
+        i=0 se a=b,
+        i>0 se a>b,
+        *um erro ocorre se a e b não podem ser comparados
+
+
+
+
+
+
+
+compare(Object a, Object b) #pega objto a
+throws ClassCastException {
+xa = ((Point2D) a).getX(); #converte a para Point2D ja que recebe a como objeto
