@@ -1,1 +1,21 @@
 Uma coleção buscavel de itens chave-elemento
+
+Vários itens com a mesma chave são permitidos
+
+Bom para algo que adiciona muito mais que remove
+
+Utiliza busca binaria
+
+insertItem roda em tempo O(1)
+findElement e removeElement roda em tempo O(n)
+
+
+*Tabela de Pesquisa*
+Uma tabela de pesquisa é um dicionário ordenada
+
+
+findElement executa em tempo O(log n), usando busca binária
+
+insertItem executa em tempo O(n)
+
+removeElement executa em tempo O(n)
