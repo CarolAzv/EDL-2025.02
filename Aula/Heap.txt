@@ -1,0 +1,12 @@
+Baseada em arvore binaria
+
+A chave do pai tem que ser menor que a chave dos filhos
+
+Tem que ser uma arvore binaria completa
+    *Se preenche da esquerda pra direita
+    *Para ser considerada completa ela não pode ter espações entre os elementos
+
+Não se importa com a ordem dos itens desde que o pai senha menor que os filhos
+
+Heap mínimo = os pais são menores que os filhos
+Heap maximo = os pais são maiores que os filhos
