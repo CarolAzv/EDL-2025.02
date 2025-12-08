@@ -62,12 +62,10 @@ public class ArvoreBinaria{
 
     public Iterator elements(){
         ArrayList<Object> elementos = new ArrayList<Object>();
-        for(int i=0; i>tamanho; i++){
-            elementos
-        }
-        child.add(no.getEsquerda());
-        child.add(no.getDireita());
-        Iterator<Object> ite = child.iterator();
+        elementos.add(raiz.getElemento());
+         elementos.add(child.add(no.getEsquerda()));
+         elementos.add(child.add(no.getDireita()));
+        Iterator<Object> ite = elementos.iterator();
         return ite;
     }
 
