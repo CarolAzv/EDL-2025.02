@@ -19,3 +19,31 @@ findElement executa em tempo O(log n), usando busca binária
 insertItem executa em tempo O(n)
 
 removeElement executa em tempo O(n)
+
+
+Função de dispersão
+  mapeia chave de um dado tipo em inteiros num intervalo fixo [0, N - 1]
+
+  O objetivo da função de dispersão é uniformemente dispersar chaves na faixa [0, N - 1]
+
+  Uma tabela de dispersão  consiste de uma função de dispersão h e arranjo (chamado tabela) de tamanho N
+
+
+Mapa de compressão
+  Divisão:
+    h2 (y) = y mod N
+    O tamanho de N da tabela de dispersão é geralmente um número primo
+
+  Multiplicação, Adição e Divisão (MAD):
+    h2 (y) = (ay + b) mod N
+    a e b são inteiros não negativos tais que a mod N >= 0
+    de outra forma, todo inteiro mapearia para o mesmo valor b
+
+  É uma array circular
+  A posição é definida pelo resto da divição entre n e h (Ex.: n=30 h=13 | 30 mod 13 = 3
+
+  “Linear Probing”
+    Quando remove, inves de deixar a celula fazia, colocar uma flag indicando que esta posição está "avalible"
+
+  "Hashing Duplo"
+    
