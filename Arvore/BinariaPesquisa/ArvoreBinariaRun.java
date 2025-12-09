@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 public class ArvoreBinariaRun{
     private static ArvoreBinaria arvore;
 
@@ -12,7 +14,12 @@ public class ArvoreBinariaRun{
         arvore.addChild(8);
         arvore.addChild(15);
         arvore.addChild(22);
+
         //print
+        arvore.elementos();
+        for(Iterator<Object> it = arvore.elementos(); it.hasNext();){
+            System.out.println(it.next());
+        }
 
         //Add
         arvore.addChild(25);

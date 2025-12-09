@@ -18,12 +18,11 @@ public class ArvoreBinaria{
         return no.getPai();
     }
 
-    public Iterator children(NoTri no){
-        ArrayList<Object> child = new ArrayList<Object>();
+    public Iterator<Object> children(NoTri no){
+        ArrayList<Object> child = new ArrayList<>();
         child.add(no.getEsquerda());
         child.add(no.getDireita());
-        Iterator<Object> ite = child.iterator();
-        return ite;
+        return child.iterator();
     }
 
 
@@ -32,41 +31,49 @@ public class ArvoreBinaria{
         return tamanho;
     }
 
-    public int height(){
-        if(raiz == null){
-            return -1;
-            
-        }else if(raiz.getEsquerda() == null && raiz.getDireita() == null){
-            return 0;
-            
-        }else if(raiz.getEsquerda() == null){
-            return 1 + raiz.getDireita().height();
-
-        }else if(raiz.getDireita() == null){
-            return 1 + raiz.getEsquerda().height();
-
-        }else{
-            int Hesq = raiz.getEsquerda().height();
-            int Hdir = raiz.getDireita().height();
-            if(Hesq > Hdir){
-                return 1 + Hesq;
-            }else{
-                return 1 + Hdir;
+    public int altura(){
+        ArrayList<Integer> altura = new ArrayList<>();
+        NoTri no = raiz;
+        int deep = 0;
+        alturaCheck(no, deep, altura);
+        int maior = 0;
+        for(int i=0; i<altura.size(); i++){
+            int see = altura.get(i);
+            if(see>maior){
+                maior = see;
             }
         }
+        return maior;
+    }
+
+    public void alturaCheck(NoTri no, int deep, ArrayList<Integer> altura){
+        if(no.getElemento() == null){
+            altura.add(deep);
+            return;
+        }
+        deep++;
+        alturaCheck(no.getEsquerda(), deep, altura);
+        alturaCheck(no.getDireita(), deep, altura);
     }
 
     public boolean isEmpty(){
         return tamanho == 0;
     }
 
-    public Iterator elements(){
-        ArrayList<Object> elementos = new ArrayList<Object>();
-        elementos.add(raiz.getElemento());
-         elementos.add(child.add(no.getEsquerda()));
-         elementos.add(child.add(no.getDireita()));
-        Iterator<Object> ite = elementos.iterator();
-        return ite;
+    public Iterator<Object> elementos(){
+        ArrayList<Object> elementos = new ArrayList<>();
+        NoTri no = raiz;
+        elementosCheck(no, elementos);
+        return elementos.iterator();
+    }
+
+    public void elementosCheck(NoTri no, ArrayList<Object> elementos){
+        if(no.getElemento() == null){
+            return;
+        }
+        elementos.add(no.getElemento());
+        elementosCheck(no.getEsquerda(), elementos);
+        elementosCheck(no.getDireita(), elementos);
     }
 
     public Object nos(){
