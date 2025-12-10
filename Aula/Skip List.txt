@@ -1,0 +1,8 @@
+Skip List
+  Um conjuto de itens distintos
+
+  Começa no lado esquerdo superior
+  x = y: retornamos element(after(p))
+  x > y: fazemos “scan forward”
+  x < y: fazemos “drop down”
+  (se a proxima chave é maior da qual eu estou procurando vc vai para baixo)
