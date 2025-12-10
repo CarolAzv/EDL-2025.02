@@ -6,6 +6,9 @@ public class ArvoreBinariaRun{
     public static void main (String[] args){
         arvore = new ArvoreBinaria(10);
         int altura;
+        int quantos = 1;
+        int tempalt;
+        int tempqua=1;
         String space = " ";
         String sasa;
 
@@ -18,15 +21,29 @@ public class ArvoreBinariaRun{
 
         //print
         arvore.elementos();
-        altura = arvore.altura();
-        /*
-        for(Iterator<Object> it = arvore.elementos(); it.hasNext();){
-            sasa = space.repeat(altura);
-            System.out.println(sasa + it.next() + sasa);
-            altura = altura/2;
+        altura = arvore.altura()-1;
+        tempalt = altura;
+
+        Iterator<Object> it = arvore.elementos();
+        while(arvore!=null){
+            while(tempalt>=0){
+                sasa = space.repeat(altura);
+                tempalt--;
+            }
+
+            while(tempqua>0){
+                sasa = sasa + it.next() + sasa;
+                tempqua--;
+            }
+
+            for(Iterator<Object> it = arvore.elementos(); it.hasNext();){
+                sasa = space.repeat(altura);
+                System.out.println(sasa + it.next() + sasa);
+                altura = altura/2;
+            }
         }
-         */
-        System.out.println("teste print");
+        
+        //System.out.println("teste print");
 
         //Add
         arvore.addChild(25);

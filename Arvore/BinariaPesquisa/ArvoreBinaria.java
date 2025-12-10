@@ -159,6 +159,7 @@ public class ArvoreBinaria{
     //remover
     public void remove(Object o){
         NoTri seeing = raiz;
+        //loop para achar o nó
         while(raiz.getElemento()!=o){
             if((int)seeing.getElemento()>(int)o){
                 seeing=seeing.getEsquerda();
@@ -168,6 +169,7 @@ public class ArvoreBinaria{
             }
         }
 
+        //caso no não tenha filhos
         if(seeing.getEsquerda()==null && seeing.getDireita()==null){
             if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(null);
@@ -196,7 +198,7 @@ public class ArvoreBinaria{
 
         else{
             //not done
-            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
+            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){ //se o elemento for maior que o pai
                 seeing.getPai().setDireita(seeing.getDireita());
             }
             //not done
