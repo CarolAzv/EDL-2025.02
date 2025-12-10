@@ -52,8 +52,12 @@ public class ArvoreBinaria{
             return;
         }
         deep++;
-        alturaCheck(no.getEsquerda(), deep, altura);
-        alturaCheck(no.getDireita(), deep, altura);
+        if(no.getEsquerda()!=null){
+            alturaCheck(no.getEsquerda(), deep, altura);
+        }
+        if(no.getDireita()!=null){
+            alturaCheck(no.getDireita(), deep, altura);
+        }
     }
 
     public boolean isEmpty(){
@@ -68,12 +72,16 @@ public class ArvoreBinaria{
     }
 
     public void elementosCheck(NoTri no, ArrayList<Object> elementos){
-        if(no.getElemento() == null){
+        if(no.getElemento() == null){ //
             return;
         }
         elementos.add(no.getElemento());
-        elementosCheck(no.getEsquerda(), elementos);
-        elementosCheck(no.getDireita(), elementos);
+        if(no.getEsquerda()!=null){
+            elementosCheck(no.getEsquerda(), elementos);
+        }
+        if(no.getDireita()!=null){
+            elementosCheck(no.getDireita(), elementos);
+        }
     }
 
     public Object nos(){
@@ -117,12 +125,12 @@ public class ArvoreBinaria{
         // Implementação futura
     }
 
-    public void addChild(Object o){
+    public void addChild(int o){
         NoTri novo = new NoTri(o);
         NoTri seeing = raiz;
         int foi = 0;
         while(foi!=1){
-            if(seeing.getElemento()>o){
+            if((int)seeing.getElemento()>o){
                 if(seeing.getEsquerda()==null){
                     novo.setPai(seeing);
                     seeing.setEsquerda(novo);
@@ -131,7 +139,7 @@ public class ArvoreBinaria{
                 }
                 seeing=seeing.getEsquerda();
             }
-            else if(seeing.getElemento()<o){
+            else if((int)seeing.getElemento()<o){
                 if(seeing.getDireita()==null){
                     novo.setPai(seeing);
                     seeing.setDireita(novo);
@@ -140,7 +148,7 @@ public class ArvoreBinaria{
                 }
                 seeing=seeing.getDireita();
             }
-            else if(seeing.getElemento()==o){
+            else if((int)seeing.getElemento()==o){
                 System.err.println("Indece já existe!");
                 foi++;
             }
@@ -152,16 +160,16 @@ public class ArvoreBinaria{
     public void remove(Object o){
         NoTri seeing = raiz;
         while(raiz.getElemento()!=o){
-            if(seeing.getElemento()>o){
+            if((int)seeing.getElemento()>(int)o){
                 seeing=seeing.getEsquerda();
             }
-            else if(seeing.getElemento()<o){
+            else if((int)seeing.getElemento()<(int)o){
                 seeing=seeing.getDireita();
             }
         }
 
         if(seeing.getEsquerda()==null && seeing.getDireita()==null){
-            if(seeing.getElemento>seeing.getPai().getElemento){
+            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(null);
             }
             else{
@@ -170,7 +178,7 @@ public class ArvoreBinaria{
         }
 
         else if(seeing.getEsquerda()!=null && seeing.getDireita()==null){
-            if(seeing.getElemento>seeing.getPai().getElemento()){
+            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(seeing.getEsquerda());
             }
             else{
@@ -178,7 +186,7 @@ public class ArvoreBinaria{
             }
         }
         else if(seeing.getEsquerda()==null && seeing.getDireita()!=null){
-            if(seeing.getElemento>seeing.getPai().getElemento()){
+            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(seeing.getDireita());
             }
             else{
@@ -188,7 +196,7 @@ public class ArvoreBinaria{
 
         else{
             //not done
-            if(seeing.getElemento>seeing.getPai().getElemento()){
+            if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(seeing.getDireita());
             }
             //not done
