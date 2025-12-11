@@ -1,16 +1,16 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Iterator;
 public class ArvoreBinariaRun{
-    private static ArvoreBinaria arvore;
+private static ArvoreBinaria arvore;
 
     public static void main (String[] args){
         arvore = new ArvoreBinaria(10);
         int altura;
         int quantos = 1;
         int tempalt;
-        int tempqua=1;
+        int tempqua;
         String space = " ";
-        String sasa;
+        String sasa = "";
 
         //Add
         arvore.addChild(5);
@@ -22,25 +22,26 @@ public class ArvoreBinariaRun{
         //print
         arvore.elementos();
         altura = arvore.altura()-1;
-        tempalt = altura;
 
         Iterator<Object> it = arvore.elementos();
-        while(arvore!=null){
+        while(it.hasNext()==true){
+            tempalt = altura;
+            tempqua = quantos;
+
             while(tempalt>=0){
-                sasa = space.repeat(altura);
+                space = " ".repeat(altura);
                 tempalt--;
             }
 
-            while(tempqua>0){
-                sasa = sasa + it.next() + sasa;
+            while(tempqua>0 && it.hasNext()==true){
+                sasa = sasa + space + it.next() + space;
                 tempqua--;
             }
 
-            for(Iterator<Object> it = arvore.elementos(); it.hasNext();){
-                sasa = space.repeat(altura);
-                System.out.println(sasa + it.next() + sasa);
-                altura = altura/2;
-            }
+            System.out.println(sasa);
+            altura--;
+            quantos++;
+            sasa = "";
         }
         
         //System.out.println("teste print");
