@@ -40,22 +40,66 @@ private static ArvoreBinaria arvore;
 
             System.out.println(sasa);
             altura--;
-            quantos++;
+            quantos = quantos*2;
             sasa = "";
         }
-        
-        //System.out.println("teste print");
 
         //Add
         arvore.addChild(25);
 
         //print
-        System.out.println("teste print");
+        quantos = 1;
+        arvore.elementos();
+        altura = arvore.altura()-1;
+
+        it = arvore.elementos();
+        while(it.hasNext()==true){
+            tempalt = altura;
+            tempqua = quantos;
+
+            while(tempalt>=0){
+                space = " ".repeat(altura);
+                tempalt--;
+            }
+
+            while(tempqua>0 && it.hasNext()==true){
+                sasa = sasa + space + it.next() + space;
+                tempqua--;
+            }
+
+            System.out.println(sasa);
+            altura--;
+            quantos = quantos*2;
+            sasa = "";
+        }
 
         //remove
         arvore.remove(25);
 
         //print
-        System.out.println("teste print");
+        quantos = 1;
+        arvore.elementos();
+        altura = arvore.altura()-1;
+
+        it = arvore.elementos();
+        while(it.hasNext()==true){
+            tempalt = altura;
+            tempqua = quantos;
+
+            while(tempalt>=0){
+                space = " ".repeat(altura);
+                tempalt--;
+            }
+
+            while(tempqua>0 && it.hasNext()==true){
+                sasa = sasa + space + it.next() + space;
+                tempqua--;
+            }
+
+            System.out.println(sasa);
+            altura--;
+            quantos = quantos*2;
+            sasa = "";
+        }
     }
 }

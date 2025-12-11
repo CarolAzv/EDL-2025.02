@@ -177,8 +177,10 @@ public class ArvoreBinaria{
             else{
                 seeing.getPai().setEsquerda(null);
             }
+            return;
         }
 
+        //caso tenha apenas um filho
         else if(seeing.getEsquerda()!=null && seeing.getDireita()==null){
             if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
                 seeing.getPai().setDireita(seeing.getEsquerda());
@@ -186,6 +188,7 @@ public class ArvoreBinaria{
             else{
                 seeing.getPai().setEsquerda(seeing.getEsquerda());
             }
+            return;
         }
         else if(seeing.getEsquerda()==null && seeing.getDireita()!=null){
             if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){
@@ -194,17 +197,27 @@ public class ArvoreBinaria{
             else{
                 seeing.getPai().setEsquerda(seeing.getDireita());
             }
+            return;
         }
 
+        //caso tenha os dois filhos
         else{
             //not done
             if((int)seeing.getElemento()>(int)seeing.getPai().getElemento()){ //se o elemento for maior que o pai
                 seeing.getPai().setDireita(seeing.getDireita());
+                if(seeing.getDireita().getEsquerda()!=null && seeing.getDireita().getDireita()!=null){
+                    NoTri au = seeing.getEsquerda();
+                    while(seeing.getEsquerda()!=null || seeing.getDireita()!=null){
+                        seeing=seeing.getDireita();
+                    }
+                    if(seeing.getEsquerda()==null){
+                        seeing.setEsquerda(au);
+                    }else {
+                        seeing.setDireita(au);
+                    }
+                }
             }
-            //not done
-            else{
-                seeing.getPai().setEsquerda(seeing.getDireita());
-            }
+            return;
         }
     }
 }
