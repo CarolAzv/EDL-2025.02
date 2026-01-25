@@ -1,4 +1,3 @@
-#falar como o código funciona
 def introsort(array):
     max_depth = math.log(len(array),2)
     size = len(array)
