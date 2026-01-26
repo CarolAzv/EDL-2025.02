@@ -7,36 +7,36 @@ void swapValue(int *a, int *b){
     return;
 }
 
-void InsertionSort(int arr[], int *begin, int *end){
-    int left = begin - arr;
-    int right = end - arr;
+void InsertionSort(int arr[], int *comeco, int *fim){
+    int esquerda = comeco - arr;
+    int direita = fim - arr;
 
-    for (int i = left+1; i <= right; i++){
-        int key = arr[i];
+    for (int i = esquerda+1; i <= direita; i++){
+        int chave = arr[i];
         int j = i-1;
 
-        while (j >= left && arr[j] > key){
+        while (j >= esquerda && arr[j] > chave){
             arr[j+1] = arr[j];
             j = j-1;
         }
-        arr[j+1] = key;
+        arr[j+1] = chave;
    }
 
    return;
 }
 
-int* Partition(int arr[], int low, int high){
-    int pivot = arr[high];
-    int i = (low - 1);
+int* Partition(int arr[], int baixo, int alto){
+    int pivot = arr[alto];
+    int i = (baixo - 1);
 
-    for (int j = low; j <= high- 1; j++){
+    for (int j = baixo; j <= alto- 1; j++){
         if (arr[j] <= pivot){
             i++;
 
             swap(arr[i], arr[j]);
         }
     }
-    swap(arr[i + 1], arr[high]);
+    swap(arr[i + 1], arr[alto]);
     return (arr + i + 1);
 }
 
@@ -61,35 +61,35 @@ int *MedianOfThree(int * a, int * b, int * c){
         return (b);
 }
 
-void IntrosortUtil(int arr[], int * begin, int * end, int depthLimit){
-    int size = end - begin;
+void IntrosortUtil(int arr[], int * comeco, int * fim, int depthLimite){
+    int size = fim - comeco;
 
     if (size < 16){
-        InsertionSort(arr, begin, end);
+        InsertionSort(arr, comeco, fim);
         return;
     }
 
-    if (depthLimit == 0){
-        make_heap(begin, end+1);
-        sort_heap(begin, end+1);
+    if (depthLimite == 0){
+        make_heap(comeco, fim+1);
+        sort_heap(comeco, fim+1);
         return;
     }
 
-    int * pivot = MedianOfThree(begin, begin+size/2, end);
+    int * pivot = MedianOfThree(comeco, comeco+size/2, fim);
 
-    swapValue(pivot, end);
+    swapValue(pivot, fim);
 
-    int * partitionPoint = Partition(arr, begin-arr, end-arr);
-    IntrosortUtil(arr, begin, partitionPoint-1, depthLimit - 1);
-    IntrosortUtil(arr, partitionPoint + 1, end, depthLimit - 1);
+    int * partitionPoint = Partition(arr, comeco-arr, fim-arr);
+    IntrosortUtil(arr, comeco, partitionPoint-1, depthLimite - 1);
+    IntrosortUtil(arr, partitionPoint + 1, fim, depthLimite - 1);
 
     return;
 }
 
-void Introsort(int arr[], int *begin, int *end){
-    int depthLimit = 2 * log(end-begin);
+void Introsort(int arr[], int *comeco, int *fim){
+    int depthLimite = 2 * log(fim-comeco);
 
-    IntrosortUtil(arr, begin, end, depthLimit);
+    IntrosortUtil(arr, comeco, fim, depthLimite);
 
       return;
 }
