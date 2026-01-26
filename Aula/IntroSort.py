@@ -1,3 +1,101 @@
+using namespace std;
+
+void swapValue(int *a, int *b){
+    int *temp = a;
+    a = b;
+    b = temp;
+    return;
+}
+
+void InsertionSort(int arr[], int *begin, int *end){
+    int left = begin - arr;
+    int right = end - arr;
+
+    for (int i = left+1; i <= right; i++){
+        int key = arr[i];
+        int j = i-1;
+
+        while (j >= left && arr[j] > key){
+            arr[j+1] = arr[j];
+            j = j-1;
+        }
+        arr[j+1] = key;
+   }
+
+   return;
+}
+
+int* Partition(int arr[], int low, int high){
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high- 1; j++){
+        if (arr[j] <= pivot){
+            i++;
+
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (arr + i + 1);
+}
+
+
+int *MedianOfThree(int * a, int * b, int * c){
+    if (*a < *b && *b < *c)
+        return (b);
+
+    if (*a < *c && *c <= *b)
+        return (c);
+
+    if (*b <= *a && *a < *c)
+        return (a);
+
+    if (*b < *c && *c <= *a)
+        return (c);
+
+    if (*c <= *a && *a < *b)
+        return (a);
+
+    if (*c <= *b && *b <= *a)
+        return (b);
+}
+
+void IntrosortUtil(int arr[], int * begin, int * end, int depthLimit){
+    int size = end - begin;
+
+    if (size < 16){
+        InsertionSort(arr, begin, end);
+        return;
+    }
+
+    if (depthLimit == 0){
+        make_heap(begin, end+1);
+        sort_heap(begin, end+1);
+        return;
+    }
+
+    int * pivot = MedianOfThree(begin, begin+size/2, end);
+
+    swapValue(pivot, end);
+
+    int * partitionPoint = Partition(arr, begin-arr, end-arr);
+    IntrosortUtil(arr, begin, partitionPoint-1, depthLimit - 1);
+    IntrosortUtil(arr, partitionPoint + 1, end, depthLimit - 1);
+
+    return;
+}
+
+void Introsort(int arr[], int *begin, int *end){
+    int depthLimit = 2 * log(end-begin);
+
+    IntrosortUtil(arr, begin, end, depthLimit);
+
+      return;
+}
+
+#--------------------------------------------------
+
 def introsort(array):
     max_depth = math.log(len(array),2)
     size = len(array)
@@ -18,8 +116,7 @@ using namespace std;
 
 // A utility function to swap the values pointed by
 // the two pointers
-void swapValue(int *a, int *b)
-{
+void swapValue(int *a, int *b){
     int *temp = a;
     a = b;
     b = temp;
@@ -27,23 +124,20 @@ void swapValue(int *a, int *b)
 }
 
 /* Function to sort an array using insertion sort*/
-void InsertionSort(int arr[], int *begin, int *end)
-{
+void InsertionSort(int arr[], int *begin, int *end){
     // Get the left and the right index of the subarray
     // to be sorted
     int left = begin - arr;
     int right = end - arr;
 
-    for (int i = left+1; i <= right; i++)
-    {
+    for (int i = left+1; i <= right; i++){
         int key = arr[i];
         int j = i-1;
 
        /* Move elements of arr[0..i-1], that are
           greater than key, to one position ahead
           of their current position */
-        while (j >= left && arr[j] > key)
-        {
+        while (j >= left && arr[j] > key){
             arr[j+1] = arr[j];
             j = j-1;
         }
@@ -55,17 +149,14 @@ void InsertionSort(int arr[], int *begin, int *end)
 
 // A function to partition the array and return
 // the partition point
-int* Partition(int arr[], int low, int high)
-{
+int* Partition(int arr[], int low, int high){
     int pivot = arr[high];    // pivot
     int i = (low - 1);  // Index of smaller element
 
-    for (int j = low; j <= high- 1; j++)
-    {
+    for (int j = low; j <= high- 1; j++){
         // If current element is smaller than or
         // equal to pivot
-        if (arr[j] <= pivot)
-        {
+        if (arr[j] <= pivot){
             // increment index of smaller element
             i++;
 
@@ -80,8 +171,7 @@ int* Partition(int arr[], int low, int high)
 // A function that find the middle of the
 // values pointed by the pointers a, b, c
 // and return that pointer
-int *MedianOfThree(int * a, int * b, int * c)
-{
+int *MedianOfThree(int * a, int * b, int * c){
     if (*a < *b && *b < *c)
         return (b);
 
@@ -102,22 +192,18 @@ int *MedianOfThree(int * a, int * b, int * c)
 }
 
 // A Utility function to perform intro sort
-void IntrosortUtil(int arr[], int * begin,
-                  int * end, int depthLimit)
-{
+void IntrosortUtil(int arr[], int * begin, int * end, int depthLimit){
     // Count the number of elements
     int size = end - begin;
 
       // If partition size is low then do insertion sort
-    if (size < 16)
-    {
+    if (size < 16){
         InsertionSort(arr, begin, end);
         return;
     }
 
     // If the depth is zero use heapsort
-    if (depthLimit == 0)
-    {
+    if (depthLimit == 0){
         make_heap(begin, end+1);
         sort_heap(begin, end+1);
         return;
@@ -139,8 +225,7 @@ void IntrosortUtil(int arr[], int * begin,
 }
 
 /* Implementation of introsort*/
-void Introsort(int arr[], int *begin, int *end)
-{
+void Introsort(int arr[], int *begin, int *end){
     int depthLimit = 2 * log(end-begin);
 
     // Perform a recursive Introsort
